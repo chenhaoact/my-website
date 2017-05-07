@@ -3,4 +3,7 @@ logs
 .grunt
 node_modules
 bower_components
-build
+build/
+.idea
+.vscode
+*.log*
