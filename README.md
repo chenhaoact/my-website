@@ -277,3 +277,7 @@ const staticsPath = '../app/build'
 app.use(convert(statics(
   path.join( __dirname,  staticsPath)
 )))
+
+
+##分枝版本说明
+use-webpack1 原先使用webpack1搭建，留存一份日后涉及webpack1可参考
