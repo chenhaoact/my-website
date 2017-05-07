@@ -1,11 +1,16 @@
-##所用技术：
+# 陈浩的个人网站
 
+## 所用技术：
+前端：
+react
+redux
 antd": "^2.9.3"
 https://ant.design/docs/react/introduce-cn
 
+服务端：
 "koa": "^2.2.0"
 
-##命令
+## 命令
 
 运行
 npm run dev
@@ -279,5 +284,5 @@ app.use(convert(statics(
 )))
 
 
-##分枝版本说明
+## 分枝版本说明
 use-webpack1 原先使用webpack1搭建，留存一份日后涉及webpack1可参考

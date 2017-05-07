@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d47a4862-8b84-4517-b9c9-42416f8cd2da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -36,8 +34,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="181">
-                <caret line="282" column="47" lean-forward="true" selection-start-line="282" selection-start-column="47" selection-end-line="282" selection-end-column="47" />
+              <first_editor relative-caret-position="162">
+                <caret line="286" column="9" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="288" selection-end-column="0" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -70,8 +68,8 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="59" />
-    <option name="y" value="77" />
+    <option name="x" value="33" />
+    <option name="y" value="74" />
     <option name="width" value="1200" />
     <option name="height" value="520" />
   </component>
@@ -131,15 +129,15 @@
       <workItem from="1485322265746" duration="1065000" />
       <workItem from="1485864298731" duration="9000" />
       <workItem from="1493295422536" duration="2000" />
-      <workItem from="1494147366884" duration="105000" />
+      <workItem from="1494147366884" duration="558000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1181000" />
+    <option name="totallyTimeSpent" value="1634000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="59" y="77" width="1200" height="520" extended-state="0" />
+    <frame x="33" y="74" width="1200" height="520" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -248,8 +246,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="181">
-            <caret line="282" column="47" lean-forward="true" selection-start-line="282" selection-start-column="47" selection-end-line="282" selection-end-column="47" />
+          <first_editor relative-caret-position="162">
+            <caret line="286" column="9" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="288" selection-end-column="0" />
             <folding />
           </first_editor>
           <second_editor />
