@@ -14,8 +14,10 @@ https://ant.design/docs/react/introduce-cn
 
 运行
 npm run dev
-
 http://localhost:8080
+
+构建打包
+npm run build
 
 # 前端
 
@@ -29,6 +31,7 @@ http://www.jianshu.com/p/98c22488cf56
 一小时包教会 —— webpack 入门指南：
 http://www.w2bc.com/Article/50764
 
+目前已升级到webpack2
 
 ### ESLint:
 
@@ -131,7 +134,7 @@ plugins: 指定一些插件的使用，如：
 使用了插件webpack-bundle-analyzer来可视化分析包的大小：https://github.com/th0r/webpack-bundle-analyze
 
 
-webpack优化：
+#### webpack优化：
 
 （1）ant-d按需加载(使用babel-plugin-import 是一个用于按需加载组件代码和样式的 babel 插件：
 https://ant.design/docs/react/use-with-create-react-app-cn 参考高级配置和按需加载部分
@@ -162,6 +165,12 @@ build目录多出来了app.js.gz（1.09 MB）和vendors.js.gz（80.1 kB），可
 所以如果有gzip的压缩文件会默认去解析，从而提升应用的性能。
 
 经过这些步骤，在服务端node应用的加载所有前端资源的时间有一开始的近1min,变为了1.64s,很大的提升了性能和体验
+
+#### 升级webpack2
+升级到webpack2,具体参考了webpack2官网的迁移和配置部分。
+
+#### 支持多页面
+
 
 
 ### .editorconfig
@@ -267,7 +276,8 @@ https://chenshenhai.github.io/koa2-note/note/template/add.html
 （需要先npm安装koa-convert和koa-static）
 https://chenshenhai.github.io/koa2-note/note/static/middleware.html
 
-这里把静态资源的路径设置到了/app/build下,即前端项目的build目录下，这样前端项目修改后直接npm run build后就可以生效，不涉及前端文件的再拷贝，js，css.图片，文件等资源都统一指向到/app/build目录下
+这里把静态资源的路径设置到了/app/build下,即前端项目的build目录下，这样前端项目修改后直接npm run build后就可以生效，
+不涉及前端文件的再拷贝，js，css.图片，文件等资源都统一指向到/app/build目录下,服务器上的资源文件则是直接通过 域名/静态资源文件 拿到
 页面也通过静态资源输出，如index.html为首页，以后想要其他的页面直接新增即可：
 
 const path = require('path')
@@ -286,3 +296,5 @@ app.use(convert(statics(
 
 ## 分枝版本说明
 use-webpack1 原先使用webpack1搭建，留存一份日后涉及webpack1可参考
+daily/0.0.1  从webpack1升级到webpack2
+

@@ -6,12 +6,7 @@ import {Router, Route, Link, hashHistory} from 'react-router';
 import {IndexRoute} from 'react-router';
 
 // import 'antd/dist/antd.css'; 使用了babel-plugin-import 会按需加载样式，不需要这样全量引入样式了。 参考：https://ant.design/docs/react/use-with-create-react-app-cn 按需加载部分
-//引入通用的scss样式
-import './utils/scss/util.scss';
-import './utils/scss/common.scss';
-import './utils/scss/variable.scss';
-
-import './index.scss';
+import './index.scss'; //该scss下引用了util下的一些通用样式
 
 //Material-UI React组件库需要用到,http://www.material-ui.com/#/get-started/installation
 import injectTapEventPlugin from 'react-tap-event-plugin';

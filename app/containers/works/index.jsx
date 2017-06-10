@@ -10,11 +10,12 @@ class Works extends React.Component {
 
 
   render() {
-
     //TODO 数据与组件渲染逻辑待完善,还有路由
     return (
       <div className="m-t-l">
-        <CardArea />
+        {/*TODO:作品卡片列表页组件待完善*/}
+        {/*<CardArea />*/}
+        作品
       </div>
     );
   }

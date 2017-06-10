@@ -38,7 +38,7 @@ const path = require('path')
 const convert = require('koa-convert')
 const statics = require('koa-static')
 
-// 静态资源目录对于相对入口文件index.js的路径
+// 静态资源目录对于相对入口文件index.js的路径，服务器上的资源文件则是直接通过 域名/静态资源文件 拿到
 const staticsPath = '../app/build'
 
 // 由于koa-static目前不支持koa2

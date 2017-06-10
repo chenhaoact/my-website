@@ -1,4 +1,7 @@
-@import "./utils/scss/util";
+//引入通用的scss样式
+@import "./utils/scss/util.scss";
+@import "./utils/scss/common.scss";
+@import "./utils/scss/variable.scss";
 
 #app{
   height: 100%;
