@@ -7,8 +7,11 @@ class Footer extends React.Component {
   }
 
   render() {
+    /**
+     * 低栏不固定，放在所有内容下面的最底部
+     * */
     return (
-      <div className="absolute bottom-0 footer">
+      <div className="footer-component bottom-0">
         底栏
       </div>
     );

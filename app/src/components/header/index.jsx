@@ -27,8 +27,11 @@ class Header extends React.Component {
   }
 
   render() {
+    /**
+     * 顶栏固定（fixed），一直放在最上面
+     * */
     return (
-      <div>
+      <div className="header-component position-fixed top-0">
         <Menu
           onClick={this.handleClick.bind(this)}
           selectedKeys={[this.state.current]}

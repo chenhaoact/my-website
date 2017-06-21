@@ -1,3 +1,4 @@
+//使用nodejs的path模块确定路径
 const path = require('path');
 const webpack = require('webpack');
 // 导入非 webpack 默认自带插件
@@ -6,6 +7,8 @@ const DashboardPlugin = require('webpack-dashboard/plugin');
 const HtmlwebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// 使用clean-webpack-plugin插件，打包之前删除打包的文件夹及其文件，以便重新进行打包，避免原来打包文件堆积
+const CleanPlugin = require('clean-webpack-plugin');
 
 /**
  * 文件路径定义
@@ -16,16 +19,16 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 module.exports = {
   //entry,入口，指定要打包成的文件，目前是有app.js和vendors.js，这里应用程序开始执行，webpack 开始打包
   entry: {
-    app: path.resolve(__dirname, 'app/index.jsx'),
+    app: path.resolve(__dirname, 'app/src/index.jsx'),
     //提取第三方库，单独打包到venders.js,提升性能
     //需要用到的一些库，最好单独提出来到venders比较好，不要和自己的业务代码混在一起
     vendors: ['react', 'react-dom', 'react-router', 'react-redux', 'moment'],
     /**
      * 多页面支持:
-     * 除了应用默认主页面外的其他页面的html以及其业务js加到app/pages下app/pages下新建的页面逻辑文件夹下
+     * 除了应用默认主页面外的其他页面的html以及其业务js加到app/src/pages下新建的页面逻辑文件夹下
      * 每增加一个页面，参考下面增加一个页面入口项，并且需要再添加下面plugins部分的HtmlwebpackPlugin项
      * */
-    page2: path.resolve(__dirname, 'app/pages/page2/page2.jsx')
+    page2: path.resolve(__dirname, 'app/src/pages/page2/page2.jsx')
   },
   // output,出口，输出，webpack 如何输出结果的相关选项
   output: {
@@ -49,13 +52,23 @@ module.exports = {
       // },
       {
         test: /\.(js|jsx)$/, //js和jsx文件都这样用babel处理
-        include: [ //include定义哪些文件需要处理test 和 include 具有相同的作用，都是必须匹配选项，exclude 是必不匹配选项（优先于 test 和 include）
-          path.resolve(__dirname, "app")
+        //include定义哪些文件需要处理test 和 include 具有相同的作用，都是必须匹配选项，exclude 是必不匹配选项（优先于 test 和 include）
+        //指定include，缩小打包范围，提高打包速度,指定它就不用再指定exclude: /node_modules/ 了
+        include: [
+          path.resolve(__dirname, "app/src")
         ],
-        loader: "babel-loader", //// 应该应用的 loader，它相对上下文解析,为了更清晰，`-loader` 后缀在 webpack 2 中不再是可选的
+        //loader处理的排除范围哪些不需要处理,node_modules默认是排除的，是否指定不会影响打包速度
+        exclude:[],
+        // 应该应用的 loader，它相对上下文解析,为了更清晰，`-loader` 后缀在 webpack 2 中不再是可选的
+        // 这里用babel处理js或jsx，https://babeljs.io/docs/setup/#installation
+        loader: "babel-loader",
         options: { //loader 的可选项,原来query中的配置写在这里
-          //使用这两种presets处理js或者jsx文件
-          presets: ["es2015","react"],
+          /**
+           * 使用这两种presets处理js(env支持最新版es6，如:2017年支持es2017)和jsx文件,
+           * 需要安装babel-preset-env(安装它就不用安装babel-preset-2015了,也就不用在presets中写es2015了)，参考：https://babeljs.io/docs/plugins/preset-env/
+           * 和babel-preset-react 参考：https://babeljs.io/docs/plugins/preset-react/
+           * */
+          presets: ["env","react"],
           // ant-d官网推荐以这种方式引入ant-d组件的样式可以使得样式也按需加载，减少打包文件的大小提高性能,需要先安装babel-plugin-import，
           // 参考：https://github.com/ant-design/babel-plugin-import
           plugins: [
@@ -70,14 +83,14 @@ module.exports = {
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
+          fallback: "style-loader", //css-loader处理完后用style-loader插入到html的style标签中
           use: "css-loader?minimize"
         })
       },
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
+          fallback: 'style-loader', //下面的sass-loader和css-loader处理完后用style-loader插入到html的style标签中
           //resolve-url-loader may be chained before sass-loader if necessary
           use: ['css-loader?minimize', 'sass-loader'] //css-loader加?minimize参数，开启css压缩，参考https://doc.webpack-china.org/loaders/css-loader/最小化
         })
@@ -99,7 +112,7 @@ module.exports = {
     // 用于查找模块的目录
     modules: [
       "node_modules",
-      path.resolve(__dirname, "app")
+      path.resolve(__dirname, "app/src") //这里也指定到app/src下,从而不包含app/build,自己指定的模块会在src下
     ],
     // extensions,使用的扩展名
     extensions: [".js", ".json", ".jsx", ".css"],
@@ -147,38 +160,53 @@ module.exports = {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
+    // 构建之前先删除app/build(本项目不是build,因为前端代码在app下)目录下面的文件夹,使用clean-webpack-plugin插件，打包之前删除打包的文件夹及其文件，以便重新进行打包，避免原来打包文件堆积
+    new CleanPlugin(['app/build']),
     //使用插件，将css单独打包，不打入js,提升页面加载速度和性能，参考插件使用：https://github.com/webpack-contrib/extract-text-webpack-plugin
-    new ExtractTextPlugin('style.css'),
+    //单独使用link标签加载css并设置路径，相对于output配置中的publickPath。
+    /**
+     * 为支持多页面，这里各个入口js（即各页面）的css文件会分开以模块名-chunkhash值命名打包到css目录下
+     * 各页面只用自己引用的css相关文件，减少引用无关的其他页面的css代码，提升性能
+     */
+    new ExtractTextPlugin('css/[name]-[chunkhash].css'),
     //使用uglifyJs压缩js代码，提升性能。
     new webpack.optimize.UglifyJsPlugin({
       minimize: true //此配置已经是最小了，默认已去掉了注释等，不需要其他的配置。另外webpack2之后 UglifyJsPlugin 不再压缩 loaders。在未来很长一段时间里，需要通过设置 minimize:true 来压缩 loaders。
     }),
     //ignoreplugin :用于忽略引入模块中并不需要的内容，减少打包文件大小，提升性能。譬如当我们引入moment.js时，我们并不需要引入该库中所有的区域设置，因此可以利用该插件忽略不必要的代码。
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    //用插件HtmlwebpackPlugin,默认的页面在PAGE_PATH下的index.html，拿到app/index.html当做模板构建后插入vendors.js和app.js的script标签
+    //用插件HtmlwebpackPlugin,默认的页面在PAGE_PATH下的index.html，拿到app/src/index.html当做模板构建后插入vendors.js和app.js的script标签
     //参考：https://www.npmjs.com/package/html-webpack-plugin
     new HtmlwebpackPlugin({
       title: '陈浩的个人网站',
-      template: path.resolve(__dirname, 'app/index.html'),
+      template: path.resolve(__dirname, 'app/src/index.html'),
       filename: 'index.html',
       chunks: ['vendors','app'],
-      inject: 'body'
+      inject: 'body',
+      minify: { //压缩HTML文件
+        removeComments: true, //移除HTML中的注释
+        collapseWhitespace: false //删除空白符与换行符
+      }
     }),
     /**
      * 多页面支持:
      * 多次调用HtmlwebpackPlugin的方法处理各自的页面打包并应用需要的js即可
-     * app下默认的index.jsx和index.html为默认的应用主页面
-     * 加其他页面添加到app/pages下的对应页面的目录下，如果要用到和主页面一样的react技术栈那就在chunks属性中加上vendors，否则只加其自己页面js名
+     * app/src下默认的index.jsx和index.html为默认的应用主页面
+     * 加其他页面添加到app/src/pages下的对应页面的目录下，如果要用到和主页面一样的react技术栈那就在chunks属性中加上vendors，否则只加其自己页面js名
      * 每增加一个页面，参考下面增加一个页面入口项
      *
      * 其他页面访问通过:域名/页面名.html即可访问该页面,如果不加.html文件名是默认放到主页面的路由中处理无法访问页面的
      * */
     new HtmlwebpackPlugin({
       title: 'page2',
-      template: path.resolve(__dirname, 'app/pages/page2/page2.html'),
+      template: path.resolve(__dirname, 'app/src/pages/page2/page2.html'),
       filename: 'page2.html',
       chunks: ['vendors','page2'],
-      inject: 'body'
+      inject: 'body',
+      minify: { //压缩HTML文件
+        removeComments: true, //移除HTML中的注释
+        collapseWhitespace: false //删除空白符与换行符
+      }
     }),
     // webpack.optimize. 一些构建优化插件
     // https://doc.webpack-china.org/plugins/commons-chunk-plugin/

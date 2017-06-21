@@ -10,8 +10,14 @@ class Blog extends React.Component {
   render() {
     return (
       <div className="chenhaoact-blog">
+        {
+          /**
+           * 目前先嵌入iframe引入hexo博客,
+           * 通过 border: 0; 消除了iframe的边框
+           * */
+        }
         <iframe src="http://www.chenhaoact.com:4000"
-                className="blog-iframe">
+                className="blog-iframe border-0">
         </iframe>
       </div>
     );

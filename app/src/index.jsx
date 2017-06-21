@@ -33,10 +33,11 @@ const store = createStore(appMainReducer);
 import { Provider } from 'react-redux';
 
 import Home from './containers/home';
-import Me from './containers/me/index';
-import Blog from './containers/blog/index';
-import Works from './containers/works/index';
-import Life from './containers/life/index';
+import Me from './containers/me';
+import Blog from './containers/blog';
+import Works from './containers/works';
+import Life from './containers/life';
+import NotFound from './components/notFound';
 
 class App extends React.Component {
   constructor() {
@@ -62,6 +63,14 @@ class App extends React.Component {
                 <Route path="/" component={Home}>
                   {
                     /**
+                     * 使用react-router的默认路由
+                     * https://react-guide.github.io/react-router-cn/docs/guides/basics/IndexRoutes.html
+                     * 直接访问 / 的时候，默认会呈现Me组件下，避免访问 / 路由什么内容也没有
+                     * */
+                  }
+                  <IndexRoute component={Me}/>
+                  {
+                    /**
                      * react-router 嵌套在里面的组件，在Home中
                      * 使用 `this.props.children` 替换 其路由中嵌套的子路由组件
                      * 这里Home中this.props.children外就是公用的部分
@@ -71,6 +80,8 @@ class App extends React.Component {
                   <Route path="blog" component={Blog}/>
                   <Route path="works" component={Works}/>
                   <Route path="life" component={Life}/>
+                  {/*其他非法路由定位到未发现页面的组件NotFound去*/}
+                  <Route path="*" component={NotFound}/>
                 </Route>
               </Router>
             </div>

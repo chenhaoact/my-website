@@ -2,18 +2,18 @@ import React from 'react';
 
 import './index.scss';
 
-class Me extends React.Component {
+class NotFound extends React.Component {
   constructor() {
     super();
   }
 
   render() {
     return (
-      <div>
-        关于我
+      <div className="not-found-component">
+        页面不存在
       </div>
     );
   }
 }
 
-export default Me;
+export default NotFound;

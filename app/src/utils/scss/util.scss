@@ -1,0 +1,260 @@
+//经常可能用到的一些scss样式,放在util.scss里,提高scss代码的复用性,减少scss的代码量
+
+//variable
+$spacer: 15px;
+$spacer-x: 15px;
+$spacer-y: 15px;
+
+//margin 0
+.m-a-0 {
+  margin: 0 !important;
+}
+
+.m-t-0 {
+  margin-top: 0 !important;
+}
+
+.m-r {
+  margin-right: 0 !important;
+}
+
+.m-b {
+  margin-bottom: 0 !important;
+}
+
+.m-l {
+  margin-left: 0 !important;
+}
+
+.m-x {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+.m-y {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+//margin default 15px
+.m-a {
+  margin: $spacer !important;
+}
+
+.m-t {
+  margin-top: $spacer-y !important;
+}
+
+.m-r {
+  margin-right: $spacer-x !important;
+}
+
+.m-b {
+  margin-bottom: $spacer-y !important;
+}
+
+.m-l {
+  margin-left: $spacer-x !important;
+}
+
+.m-x {
+  margin-right: $spacer-x !important;
+  margin-left: $spacer-x !important;
+}
+
+.m-y {
+  margin-top: $spacer-y !important;
+  margin-bottom: $spacer-y !important;
+}
+
+//margin sm 7.5px
+.m-a-sm {
+  margin: ($spacer * 0.5) !important;
+}
+
+.m-t-sm {
+  margin-top: ($spacer-y * 0.5) !important;
+}
+
+.m-r-sm {
+  margin-right: ($spacer-x * 0.5) !important;
+}
+
+.m-b-sm {
+  margin-bottom: ($spacer-y * 0.5) !important;
+}
+
+.m-l-sm {
+  margin-left: ($spacer-x * 0.5) !important;
+}
+
+.m-x-sm {
+  margin-right: ($spacer-x * 0.5) !important;
+  margin-left: ($spacer-x * 0.5) !important;
+}
+
+.m-y-sm {
+  margin-top: ($spacer-y * 0.5) !important;
+  margin-bottom: ($spacer-y * 0.5) !important;
+}
+
+//margin md 22.5px
+.m-a-md {
+  margin: ($spacer * 1.5) !important;
+}
+
+.m-t-md {
+  margin-top: ($spacer-y * 1.5) !important;
+}
+
+.m-r-md {
+  margin-right: ($spacer-x * 1.5) !important;
+}
+
+.m-b-md {
+  margin-bottom: ($spacer-y * 1.5) !important;
+}
+
+.m-l-md {
+  margin-left: ($spacer-x * 1.5) !important;
+}
+
+.m-x-md {
+  margin-right: ($spacer-x * 1.5) !important;
+  margin-left: ($spacer-x * 1.5) !important;
+}
+
+.m-y-md {
+  margin-top: ($spacer-y * 1.5) !important;
+  margin-bottom: ($spacer-y * 1.5) !important;
+}
+
+//margin l 37.5px
+.m-a-l {
+  margin: ($spacer * 2.5) !important;
+}
+
+.m-t-l {
+  margin-top: ($spacer-y * 2.5) !important;
+}
+
+.m-r-l {
+  margin-right: ($spacer-x * 2.5) !important;
+}
+
+.m-b-l {
+  margin-bottom: ($spacer-y * 2.5) !important;
+}
+
+.m-l-l {
+  margin-left: ($spacer-x * 2.5) !important;
+}
+
+.m-x-l {
+  margin-right: ($spacer-x * 2.5) !important;
+  margin-left: ($spacer-x * 1.5) !important;
+}
+
+.m-y-l {
+  margin-top: ($spacer-y * 2.5) !important;
+  margin-bottom: ($spacer-y * 1.5) !important;
+}
+
+.f-r {
+  float: right
+}
+
+.f-l {
+  float: left
+}
+
+//padding
+.pd-a-l {
+  padding: ($spacer * 2.5) !important;
+}
+
+.pd-t-l {
+  padding-top: ($spacer-y * 2.5) !important;
+}
+
+.pd-r-l {
+  padding-right: ($spacer-x * 2.5) !important;
+}
+
+.pd-b-l {
+  padding-bottom: ($spacer-y * 2.5) !important;
+}
+
+.pd-l-l {
+  padding-left: ($spacer-x * 2.5) !important;
+}
+
+.pd-x-l {
+  padding-right: ($spacer-x * 2.5) !important;
+  padding-left: ($spacer-x * 1.5) !important;
+}
+
+.pd-y-l {
+  padding-top: ($spacer-y * 2.5) !important;
+  padding-bottom: ($spacer-y * 1.5) !important;
+}
+
+//display
+.block {
+  display: block;
+}
+
+.inline {
+  display: inline;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+//height
+.h-inherit {
+  height: inherit;
+}
+
+//高度占满父元素
+
+//position,这里不要命名为absolute fixed这种，容易和其他库的css样式冲突
+.position-absolute {
+  position: absolute;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.position-fixed {
+  position: fixed;
+}
+
+//top
+.top-0 {
+  top: 0;
+}
+
+//right
+.right-0 {
+  right: 0;
+}
+
+//bottom
+.bottom-0 {
+  bottom: 0;
+}
+
+//left
+.left-0 {
+  left: 0;
+}
+
+//border
+.border-0 {
+  border: 0;
+}
+
+

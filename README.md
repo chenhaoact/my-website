@@ -2,6 +2,7 @@
 
 ## 所用技术：
 前端：
+es6 (webpack工程环境配置支持每年最新版本的es6语法，如2017年支持es2017)
 react
 redux
 antd": "^2.9.3"
@@ -84,6 +85,8 @@ http://www.jianshu.com/p/2bcdce1dc8d4
 
 
 ##三 代码结构
+
+
 
 ### package.json
 
@@ -183,11 +186,16 @@ http://editorconfig.org
 
 ### .eslintignore 
 
-让eslint忽略检测的文件 .eslintignore 配置规则与 .gitignore 一样
+让eslint忽略检测的文件 .eslintignore 配置规则与 .gitignore 一样 
+
+### app/src
+客户端的源代码。
+
+！！注意：把前端逻辑代码放在app/src下并和app/build同级是为了和其他的纯前端项目保持一致，
+另外打包的入口只包含app/src，而不把app/build的文件也混进去打包处理！！
 
 
-##每个子组件的代码结构
-
+#### containers与components
 都分了containers（有数据逻辑，调用视图组件渲染）和components(里的
 组件完全只负责视图渲染，不涉及数据逻辑（提供回调函数），以保证components具有高可复用性)
 
@@ -195,6 +203,17 @@ http://editorconfig.org
 
 一级container下的index.jsx中一律只使用this.pros.children去调用子container,
 不写任何的渲染或数据逻辑,reducer和actions也是下载二级container下的具体的某个container中。
+
+#### pages支持多页面
+添加一个页面参考page2
+
+#### utils 共用工具类代码
+
+
+### app/build
+客户端构建打包后的资源文件（服务端server会用到）
+
+
 
 redux:
 
