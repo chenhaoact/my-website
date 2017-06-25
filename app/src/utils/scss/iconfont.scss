@@ -1,0 +1,16 @@
+/*
+用引入symbol方式引用引入iconfont（图标项目是chenhaoact的个人网站图标库）
+详细参考：http://www.iconfont.cn/help/detail?spm=a313x.7781069.1998910419.d8cf4382a.qUloTK&helptype=code
+
+注意react项目中引入的话，xlink:href需要改成xlinkHref才会起作用。
+
+图标项目需要的js目前在最外层的index.html中以script脚本链接引入了，
+如果其他的多页面也需要的话，也可以引入。
+*/
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}

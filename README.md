@@ -209,6 +209,61 @@ http://editorconfig.org
 
 #### utils 共用工具类代码
 
+如utils/scss下的iconfont.scss是引入iconfont
+
+#####引入iconfont
+
+目前使用的是推荐的symbol引用方式。
+
+（1）在index.html下引用了iconfont图标项目的symbol生成的js，如果图标更新，js地址需要更新。
+
+```
+<script type="text/javascript" src="//at.alicdn.com/t/font_2h7z58z91azia4i.js"></script>
+```
+
+（2）在utils/scss下的iconfont.scss中
+
+```
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+```
+
+（3）使用的时候
+
+```
+{/*通过推荐的symbol引用方式引入iconfont，可以设置图标彩色等属性*/}
+<svg class="icon" aria-hidden="true">
+  <use xlinkHref="#icon-weibo"></use>
+</svg>
+```
+
+注意：
+因为是在react项目中引入，这里的xlink:href需要改成xlinkHref,class要改成className才会起作用
+（因为react中的属性名要用驼峰法），aria-hidden则不需要改成驼峰法（react还不支持该属性）。
+
+图标样式可以使用一般的css对字体的样式来控制，
+比如设置该svg父元素的font-size，color属性等控制字体的大小，颜色等。
+（直接设置svg的字体样式有的不能起作用因为svg和字体的样式属性不同）
+
+也可以直接使用svg的样式控制，具体参考svg中use元素引用symbol样式的思考
+http://blog.csdn.net/xiaozhu2hao/article/details/53183743
+
+（4）其他页面如果也要使用iconfont
+
+共用同一个iconfont项目：
+就引入该js和iconfont.scss。
+
+不同的iconfont项目：
+安装上述步骤新引入对应iconfont的js和scss。
+
+
+iconfont使用具体参考：http://www.iconfont.cn/help/detail?spm=a313x.7781069.1998910419.d8cf4382a.qUloTK&helptype=code
+
 
 ### app/build
 客户端构建打包后的资源文件（服务端server会用到）

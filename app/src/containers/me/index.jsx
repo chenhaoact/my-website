@@ -1,5 +1,5 @@
 import React from 'react';
-import { Carousel } from 'antd';
+import { Carousel,Row,Col } from 'antd';
 
 import './index.scss';
 
@@ -31,7 +31,58 @@ class Me extends React.Component {
         <Carousel vertical="true" autoplay>
           <div>
             <div className="self-introduction">
-              <h2>个人简介;社交账号</h2>
+              <Row>
+                <Col>
+                  <h2>个人简介</h2>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <p>你好，我是陈浩，天津大学软件工程系毕业，2017年通过校招加入阿里巴巴，成为了一名前端工程师（花名：君易），目前工作生活在杭州。</p>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <h2>欢迎通过以下平台联系交流或关注我的动态</h2>
+                </Col>
+              </Row>
+              <Row>
+                <Col span={2}>
+                  <a href="http://weibo.com/u/5232669014" target="_blank" className="weibo-link">
+                    {/*通过推荐的symbol引用方式引入iconfont，可以设置图标彩色等属性*/}
+                    <svg className="icon" aria-hidden="true">
+                      <use xlinkHref="#icon-weibo"></use>
+                    </svg>
+                  </a>
+                </Col>
+                <Col span={2}>
+                  <a href="https://github.com/chenhaoact"
+                     target="_blank"
+                     className="github-link">
+                    <svg className="icon" aria-hidden="true">
+                      <use xlinkHref="#icon-github"></use>
+                    </svg>
+                  </a>
+                </Col>
+                <Col span={2}>
+                  <a href="https://www.facebook.com/hao.chen.666"
+                     target="_blank"
+                     className="facebook-link">
+                    <svg className="icon" aria-hidden="true">
+                      <use xlinkHref="#icon-facebook"></use>
+                    </svg>
+                  </a>
+                </Col>
+                <Col span={2}>
+                  <a href="https://twitter.com/chenhaoact"
+                     target="_blank"
+                     className="twitter-link">
+                    <svg className="icon" aria-hidden="true">
+                      <use xlinkHref="#icon-147263962143twitter"></use>
+                    </svg>
+                  </a>
+                </Col>
+              </Row>
             </div>
           </div>
           <div>

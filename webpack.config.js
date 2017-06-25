@@ -138,6 +138,8 @@ module.exports = {
     proxy: { // proxy URLs to backend development server
       '/api': 'http://localhost:8080'
     },
+    //webpack启动服务时自动打开浏览器
+    open: true,
     contentBase: path.join(__dirname, "app/build"), // boolean | string | array, static file location
     compress: true, // enable gzip compression
     historyApiFallback: true, // true for index.html upon 404, object for multiple paths
@@ -145,12 +147,6 @@ module.exports = {
     https: false, // true for self-signed, object for cert authority
     noInfo: true, // only errors & warns on hot reload
   },
-  //原来的plugins
-  // plugins: [
-    // 把入口文件里面的数组打包,合并区块成verdors.js，
-    // 这个插件的功能是将多个打包结果中公共的部分抽取出来，作为一个单独的文件。它符合目前的场景，因为 main.js 和 vendor.js 中存在一份公共的代码，那就是 vendor.js 中的内容
-    // new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendors.js' }),
-  // ]
   //webpack2的plugins 参考：https://doc.webpack-china.org/configuration/plugins/
   plugins: [
     // 设置合适的环境变量能够，需要在生产环境中将NODE_ENV设置为production，

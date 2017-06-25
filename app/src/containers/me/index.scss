@@ -3,12 +3,32 @@
 .me-containers{
   .self-introduction{
     height: 560px;
-    background-color: cornflowerblue;
+    background-color: lightgreen;
+
+    .weibo-link{
+      font-size:36px;
+      color: orange;
+    }
+
+    .github-link{
+      font-size:36px;
+      color: black;
+    }
+
+    .facebook-link{
+      font-size:36px;
+      color: cornflowerblue;
+    }
+
+    .twitter-link{
+      font-size:36px;
+      color: deepskyblue;
+    }
   }
 
   .life{
     height: 560px;
-    background-color: lightgreen;
+    background-color: cornflowerblue;
   }
 
   .career{
