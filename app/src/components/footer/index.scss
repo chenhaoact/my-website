@@ -2,7 +2,12 @@
 
 .footer-component{
   width: 100%;
-  height: 100px;
+  height: 360px;
   background: black;
   color: white;
+
+  .music-iframe{
+    margin-left: 20px;
+    margin-top: 20px;
+  }
 }

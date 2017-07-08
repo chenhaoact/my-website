@@ -39,7 +39,7 @@ module.exports = {
     //entry目前处理的都是js文件，打包输出的js会放在js文件夹下,方便不同类型的打包文件分类放置。默认公共库vendors扔放在build下，因为下面用了new webpack.optimize.CommonsChunkPlugin
     filename: 'js/[name]-[chunkhash].js'
   },
-  //模块配置,重要的loader在这里
+  //模块配置,重要的loader配置写在这里
   module: {
     //module.rules 模块规则（配置加载器、解析器等选项）
     //webpack1 原来的 loader 配置项在2中被更强大的 rules 系统取代，后者允许配置 loader 以及其他更多选项
@@ -104,6 +104,45 @@ module.exports = {
             minimize: true //进行压缩
           }
         }]
+      },
+      /**
+       * 使用file-loader对这些文件类型进行打包处理,参考：https://github.com/webpack-contrib/file-loader
+       * 图片文件等静态资源目前统一放在app/src/assets下，打包到app/build/assets下
+       * 打包之后文件在css中可以直接用相对路径，目前也可以在jsx中使用相对路径:
+       * 格式上需要加require如： src={ require('../../assets/sidai-touxiang.png') }
+       * 路径是app/src下相应代码相对于src/assets下对应图片等文件的相对路径
+       * 建议用的文件最好传cdn；这里也可以处理其他的文件，如字体文件等，用到再添加相应webpack配置
+       * */
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        //webpack2开始，使用多个loader建议写在use数组中
+        use: [
+          //加？参数等效于写query后在里边配置各属性，一般多个loader连用写在loaders属性里时简易这样加参数去配置query
+          //配置打包的文件名为name-hash值.文件后缀名，入口相关文件引用到的资源文件才会被打包
+          'file-loader?name=assets/[name]-[hash].[ext]',
+          //image-webpack-loader配合file-loader或url-loader，
+          // 可以压缩图片文件大小,默认可以压缩几倍到几十倍，压缩比与质量也可以灵活配置
+          // 参考 https://github.com/tcoopman/image-webpack-loader
+          'image-webpack-loader'
+        ]
+      },
+      /**
+       * 用webpack的markdown-loader
+       * 可在js中读取.md文件内容输出为html
+       * */
+      {
+        test: /\.md$/,
+        use: [
+          {
+            loader: "html-loader"
+          },
+          {
+            loader: "markdown-loader",
+            options: {
+              /* your options here */
+            }
+          }
+        ]
       }
     ]
   },

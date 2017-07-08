@@ -36,6 +36,8 @@ import Home from './containers/home';
 import Me from './containers/me';
 import Blog from './containers/blog';
 import Works from './containers/works';
+import Think from './containers/think';
+import ThinkArticle from './containers/think/components/thinkArticle'
 import Life from './containers/life';
 import NotFound from './components/notFound';
 
@@ -79,6 +81,9 @@ class App extends React.Component {
                   <Route path="me" component={Me}/>
                   <Route path="blog" component={Blog}/>
                   <Route path="works" component={Works}/>
+                  <Route path="think" component={Think} />
+                  {/*这里带来参数id，可根据id等参数来指定不同的页面内容，这里可通过#/think/article/某id访问到*/}
+                  <Route path="thinkArticle/:id" component={ThinkArticle} />
                   <Route path="life" component={Life}/>
                   {/*其他非法路由定位到未发现页面的组件NotFound去*/}
                   <Route path="*" component={NotFound}/>

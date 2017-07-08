@@ -36,6 +36,7 @@ class Header extends React.Component {
           onClick={this.handleClick.bind(this)}
           selectedKeys={[this.state.current]}
           mode="horizontal"
+          className="header-menu"
         >
           <Menu.Item key="me">
             {
@@ -50,10 +51,13 @@ class Header extends React.Component {
             <Link to="/blog">技术博客</Link>
           </Menu.Item>
           <Menu.Item key="works">
-            <Link to="/works">作品</Link>
+            <Link to="/works">作品与实验室</Link>
+          </Menu.Item>
+          <Menu.Item key="think">
+            <Link to="/think">思考与感悟</Link>
           </Menu.Item>
           <Menu.Item key="life">
-            <Link to="/life">生活</Link>
+            <Link to="/life">用心生活</Link>
           </Menu.Item>
         </Menu>
       </div>

@@ -10,7 +10,9 @@ class Life extends React.Component {
   render() {
     return (
       <div className="m-t-l">
-        用心生活
+        <div>
+          用心生活
+        </div>
       </div>
     );
   }

@@ -1,14 +1,15 @@
 # 陈浩的个人网站
 
 ## 所用技术：
-前端：
+###前端：
 es6 (webpack工程环境配置支持每年最新版本的es6语法，如2017年支持es2017)
 react
 redux
-antd": "^2.9.3"
-https://ant.design/docs/react/introduce-cn
+antd": "^2.9.3"  参考：https://ant.design/docs/react/introduce-cn
+material-ui: "^0.18.5"  参考：http://www.material-ui.com/
 
-服务端：
+
+###服务端：
 "koa": "^2.2.0"
 
 ## 命令
@@ -195,7 +196,7 @@ http://editorconfig.org
 另外打包的入口只包含app/src，而不把app/build的文件也混进去打包处理！！
 
 
-#### containers与components
+#### containers与components目录
 都分了containers（有数据逻辑，调用视图组件渲染）和components(里的
 组件完全只负责视图渲染，不涉及数据逻辑（提供回调函数），以保证components具有高可复用性)
 
@@ -204,12 +205,15 @@ http://editorconfig.org
 一级container下的index.jsx中一律只使用this.pros.children去调用子container,
 不写任何的渲染或数据逻辑,reducer和actions也是下载二级container下的具体的某个container中。
 
-#### pages支持多页面
-添加一个页面参考page2
+#### pages目录 支持多页面
+添加一个页面参考pages/page2
 
-#### utils 共用工具类代码
+#### utils目录 共用工具类代码
 
 如utils/scss下的iconfont.scss是引入iconfont
+
+#### assets目录 静态资源
+图片文件等静态资源目前统一放在app/src/assets下，打包到app/build/assets下
 
 #####引入iconfont
 
@@ -284,6 +288,18 @@ https://ant.design/docs/react/introduce-cn
 
 material-ui(部分使用，material-ui一些组件要比ant-d更强大，漂亮)
 http://www.material-ui.com/#/get-started
+
+
+### 关于文章与博客
+#### 引入webpack的 markdown-loader 解析.md文件并输出到html
+
+具体参考：
+https://github.com/peerigon/markdown-loader
+
+文章的内容用markdown编辑器编辑后，
+内容放在相应containers下的data目录下.md文件中。
+
+解析代码逻辑参考 app/src/containers/think/components/thinkArticle
 
 
 # 服务端

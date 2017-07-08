@@ -6,12 +6,14 @@ import blog from './containers/blog/reducer';
 import life from './containers/life/reducer';
 import me from './containers/me/reducer';
 import works from './containers/works/reducer';
+import think from './containers/think/reducer';
 
 const appMainReducer = combineReducers({
   blog,
   life,
   me,
-  works
+  works,
+  think
 });
 
 export default appMainReducer;

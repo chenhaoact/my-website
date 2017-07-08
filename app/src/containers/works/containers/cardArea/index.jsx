@@ -24,16 +24,16 @@ class CardArea extends React.Component {
     //TODO 数据与组件渲染逻辑待完善
     return (
       <div className="m-t-l">
-        <div style={{background: '#ECECEC', padding: '30px'}}>
+        <div>
           <Row>
-            <Col span="8">
-              <WorksCard />
+            <Col span="6" offset={2}>
+              <WorksCard imgName={'js-logo.jpg'}/>
             </Col>
-            <Col span="8">
-              <WorksCard />
+            <Col span="6" offset={1}>
+              <WorksCard imgName={'html5.jpg'}/>
             </Col>
-            <Col span="8">
-              <WorksCard />
+            <Col span="6" offset={1}>
+              <WorksCard imgName={'css3.jpg'}/>
             </Col>
           </Row>
         </div>

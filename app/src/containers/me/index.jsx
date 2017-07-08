@@ -32,23 +32,31 @@ class Me extends React.Component {
           <div>
             <div className="self-introduction">
               <Row>
-                <Col>
+                <Col span={6} offset={3}>
                   <h2>个人简介</h2>
+                  {/*引用静态资源*/}
+                  {/*<img src={ require('../../assets/sidai-touxiang.png') } alt=""/>*/}
                 </Col>
               </Row>
-              <Row>
-                <Col>
-                  <p>你好，我是陈浩，天津大学软件工程系毕业，2017年通过校招加入阿里巴巴，成为了一名前端工程师（花名：君易），目前工作生活在杭州。</p>
+              <Row className="m-t-md">
+                <Col span={18} offset={3}>
+                  <p className="font-size-16">
+                    你好，我是陈浩，天津大学软件工程系毕业，2017年通过校招加入阿里巴巴，成为了一名前端工程师（花名：君易），目前工作生活在杭州。
+                  </p>
                 </Col>
               </Row>
-              <Row>
-                <Col>
-                  <h2>欢迎通过以下平台联系交流或关注我的动态</h2>
+              <Row className="m-t-md">
+                <Col span={18} offset={3}>
+                  <p className="font-size-16">
+                    欢迎通过以下平台联系交流或关注我的动态：
+                  </p>
                 </Col>
               </Row>
-              <Row>
-                <Col span={2}>
-                  <a href="http://weibo.com/u/5232669014" target="_blank" className="weibo-link">
+              <Row className="m-t-md">
+                <Col span={2} offset={3}>
+                  <a href="http://weibo.com/u/5232669014"
+                     target="_blank"
+                     className="weibo-link">
                     {/*通过推荐的symbol引用方式引入iconfont，可以设置图标彩色等属性*/}
                     <svg className="icon" aria-hidden="true">
                       <use xlinkHref="#icon-weibo"></use>
@@ -87,12 +95,25 @@ class Me extends React.Component {
           </div>
           <div>
             <div className="career">
-              <h2>工作与事业</h2>
-            </div>
-          </div>
-          <div>
-            <div className="life">
-              <h2>用心生活</h2>
+              <Row>
+                <Col span={6} offset={3}>
+                  <h2>工作与事业</h2>
+                </Col>
+              </Row>
+              <Row className="m-t-md">
+                <Col span={18} offset={3}>
+                  <p className="font-size-16">
+                    就职于阿里巴巴，主要从事前端开发(>= html,css,javascript)，所用技术包括但不限于：React,Vue,Weex,RN,Webpack,Node.js等。
+                  </p>
+                </Col>
+              </Row>
+              <Row className="m-t-md">
+                <Col span={18} offset={3}>
+                  <p className="font-size-16">
+                    对端技术（跨平台移动端，桌面端开发等）,图像图像多媒体（Canvas,Svg,WebGL,VR/AR等）相关技术很感兴趣，也在不断的学习和探索中。
+                  </p>
+                </Col>
+              </Row>
             </div>
           </div>
         </Carousel>

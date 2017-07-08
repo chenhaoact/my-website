@@ -4,36 +4,33 @@
   .self-introduction{
     height: 560px;
     background-color: lightgreen;
+    padding-top: 80px;
 
     .weibo-link{
-      font-size:36px;
+      font-size:56px;
       color: orange;
     }
 
     .github-link{
-      font-size:36px;
+      font-size:56px;
       color: black;
     }
 
     .facebook-link{
-      font-size:36px;
+      font-size:60px;
       color: cornflowerblue;
     }
 
     .twitter-link{
-      font-size:36px;
+      font-size:60px;
       color: deepskyblue;
     }
   }
 
-  .life{
-    height: 560px;
-    background-color: cornflowerblue;
-  }
-
   .career{
     height: 560px;
-    background-color: palevioletred;
+    background-color: cornflowerblue;
+    padding-top: 80px;
   }
 
 
