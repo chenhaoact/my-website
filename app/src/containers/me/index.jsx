@@ -1,5 +1,5 @@
 import React from 'react';
-import { Carousel,Row,Col } from 'antd';
+import {Carousel, Row, Col} from 'antd';
 
 import './index.scss';
 
@@ -15,7 +15,7 @@ class Me extends React.Component {
           /**
            * 使用ant-d的走马灯组件Carousel实现上下轮播
            * 可参考：https://ant.design/components/carousel-cn/
-           *
+           * 更多详细参数参考：https://github.com/akiran/react-slick
            * 该组件目前似乎不好支持各屏的内容封装成自己组件，会报Cannot read property 'getBoundingClientRect' of null
            * 故所有内容先都直接写在Carousel组件下
            *
@@ -28,7 +28,10 @@ class Me extends React.Component {
            * 把该组件自己在 act-ui中重写一下，让能够监听键盘的上下键一级mac键盘的上下手势
            * 并能够控制轮播时间，把该组件改的更强大一点，目前功能太简单了
            * */}
-        <Carousel vertical="true" autoplay>
+        <Carousel vertical="true"
+                  autoplay
+                  autoplaySpeed={5000}
+                  speed={1000}>
           <div>
             <div className="self-introduction">
               <Row>

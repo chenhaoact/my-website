@@ -23,7 +23,6 @@ class ThinkArticle extends React.Component {
 
     return (
       <div>
-        文章
         {
           /**
            * MdHtml是通过webpack的markdown-loader处理，引入后直接变为相应html

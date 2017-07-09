@@ -16,7 +16,6 @@ class Think extends React.Component {
     return (
       <div className="m-t-l">
         <div>
-          记录自己的思考与感悟。
           <ThinkList />
         </div>
       </div>
