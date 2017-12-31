@@ -12,6 +12,12 @@ material-ui: "^0.18.5"  参考：http://www.material-ui.com/
 ###服务端：
 "koa": "^2.2.0"
 
+
+
+
+
+# 前端
+
 ## 命令
 
 运行
@@ -20,8 +26,6 @@ http://localhost:8080
 
 构建打包
 npm run build
-
-# 前端
 
 ##二 搭建参考
 
@@ -302,7 +306,19 @@ https://github.com/peerigon/markdown-loader
 解析代码逻辑参考 app/src/containers/think/components/thinkArticle
 
 
-# 服务端
+
+
+
+
+
+
+
+
+
+
+
+
+# 服务端部署
 
 ## 本地运行启动服务（直接用node服务,更新和调试较方便，不需要用pm2）
 

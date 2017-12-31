@@ -28,7 +28,8 @@ module.exports = {
      * 除了应用默认主页面外的其他页面的html以及其业务js加到app/src/pages下新建的页面逻辑文件夹下
      * 每增加一个页面，参考下面增加一个页面入口项，并且需要再添加下面plugins部分的HtmlwebpackPlugin项
      * */
-    page2: path.resolve(__dirname, 'app/src/pages/page2/page2.jsx')
+    page2: path.resolve(__dirname, 'app/src/pages/page2/page2.jsx'),
+    githubProjectRecommend: path.resolve(__dirname, 'app/src/pages/github-project-recommend/index.jsx'),
   },
   // output,出口，输出，webpack 如何输出结果的相关选项
   output: {
@@ -243,6 +244,18 @@ module.exports = {
         collapseWhitespace: false //删除空白符与换行符
       }
     }),
+    // 通过 域名/github-project-recommend.html 可以访问到（不要加#,加了就访问react应用的首页路由去了）
+    new HtmlwebpackPlugin({
+      title: 'github-project-recommend',
+      template: path.resolve(__dirname, 'app/src/pages/github-project-recommend/index.html'),
+      filename: 'github-project-recommend.html',
+      chunks: ['vendors', 'githubProjectRecommend'], // 暂时不需要库和react jsx等文件
+      inject: 'body',
+      minify: { //压缩HTML文件
+        removeComments: true, //移除HTML中的注释
+        collapseWhitespace: false //删除空白符与换行符
+      }
+    }),
     // webpack.optimize. 一些构建优化插件
     // https://doc.webpack-china.org/plugins/commons-chunk-plugin/
     // 把入口文件里面的数组打包,合并共同的代码区块成verdors.js，
@@ -264,7 +277,7 @@ module.exports = {
     }),
     // webpack-dev-server 强化插件 TODO:看先这两个插件的作用再决定是否要加
     // new DashboardPlugin(), //参考：https://www.npmjs.com/package/webpack-dashboard
-    // new webpack.HotModuleReplacementPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     /**
      * 使用插件webpack-bundle-analyzer来可视化分析包的大小：https://github.com/th0r/webpack-bundle-analyze 以便提升性能。
      * TODO:加上webpack-bundle-analyze，每次文件有更新后就会跑错，热更新监控有问题，排查下

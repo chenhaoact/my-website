@@ -5,8 +5,7 @@
   "main": "index.jsx",
   "scripts": {
     "dev": "webpack-dev-server --progress --profile --colors --hot --inline",
-    "build": "webpack --progress --profile --colors",
-    "test": "test"
+    "build": "webpack --progress --profile --colors"
   },
   "author": "chenhaoact",
   "license": "ISC",

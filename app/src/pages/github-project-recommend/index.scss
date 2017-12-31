@@ -1,0 +1,17 @@
+//引入jsmind.css样式
+@import "./jsmind.scss";
+
+#jsmind_container{
+  // 需要自己设置#jsmind_container的高度，否则jsmind显示不出来，jsmind的css没有默认设置id为jsmind_container的容器的高，所以默认是0
+  height: 1000px!important;
+}
+
+// 重置jmnode元素样式，这样github star和文字都能够上下完美居中
+jmnode{
+  display: flex;
+  align-items: center;
+}
+
+iframe{
+  margin-left: 12px;
+}
