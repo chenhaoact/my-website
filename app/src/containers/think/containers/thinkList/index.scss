@@ -1,0 +1,15 @@
+.articleList{
+  padding: 0 20%;
+
+  li {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px dashed #ccc;
+    border-top: 1px dashed #ccc;
+
+    a{
+      font-size: 24px;
+    }
+  }
+}

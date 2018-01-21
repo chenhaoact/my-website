@@ -1,0 +1,19 @@
+$blue: #108ee9;
+
+.thinkArticle{
+  padding: 60px 20%;
+  h1{
+    color: $blue;
+    font-size: 28px;
+  }
+
+  h2{
+    color: #222;
+    font-size: 24px;
+  }
+
+  p{
+    font-size: 16px;
+    margin: 20px 0;
+  }
+}

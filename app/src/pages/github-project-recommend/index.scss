@@ -6,10 +6,11 @@
   height: 1000px!important;
 }
 
-// 重置jmnode元素样式，这样github star和文字都能够上下完美居中
+// 重置jmnode元素样式
 jmnode{
   display: flex;
-  align-items: center;
+  align-items: center; // 这样github star和文字都能够上下完美居中
+  max-width: none; // 节点不设置最大长度限制，这样要显示的内容才能完整
 }
 
 iframe{

@@ -1,6 +1,30 @@
 /**
  * Created by chenhaoact on 2017/12/30.
  */
+// import axios from 'axios';
+
+/**
+ * 此方法根据github项目链接生成github-btn；
+ * 以免每个项目都需要自己手填 <iframe> ；
+ * 自动会在前面加上项目名，所有不用再重复写了，如果要写项目简介则可以在最前面加；
+ *
+ * ！任何繁琐的重复性的工作都用代码封装成函数，工具代替，节省时间，提升效率！
+ * */
+function getGithubBtn(githubLink) {
+  const githubLinkArray = githubLink.split('/');
+  // console.log('githubLink githubLinkArray', githubLink, githubLinkArray);
+  const userName = githubLinkArray[3];
+  const projectName = githubLinkArray[4];
+  // axios.get(`//api.github.com/repos/${userName}/${projectName}`)
+  //   .then(function (response) {
+  //     console.log('response', response);
+  //   })
+  //   .catch(function (error) {
+  //     console.log('error', error);
+  //   });
+  // TODO 这里会受到github api访问的限制，上面发请求为权限验证最多只能发10个，看是否能优化下
+  return `${projectName}<iframe src='https://ghbtns.com/github-btn.html?user=${userName}&repo=${projectName}&type=star&count=true' frameborder='0' scrolling='0' width='116px' height='20px'></iframe>`;
+}
 
 /**
  * jsmind展示的数据
@@ -39,7 +63,7 @@ const mind = {
             "children": [
               {
                 "id": "You-Dont-Need-jQuery",
-                "topic": "You-Dont-Need-jQuery"
+                "topic": `${getGithubBtn('https://github.com/nefe/You-Dont-Need-jQuery')}`
               },
             ],
           },
@@ -49,11 +73,11 @@ const mind = {
             "children": [
               {
                 "id": "free-programming-books-zh_CN",
-                "topic": "free-programming-books-zh_CN<iframe src='https://ghbtns.com/github-btn.html?user=justjavac&repo=free-programming-books-zh_CN&type=star&count=true' frameborder='0' scrolling='0' width='116px' height='20px'></iframe>"
+                "topic": `${getGithubBtn('https://github.com/justjavac/free-programming-books-zh_CN/')}`
               },
               {
                 "id": "learn-anything",
-                "topic": "提供任何知识的学习路径与资源 learn-anything"
+                "topic": `提供任何知识的学习路径与资源 ${getGithubBtn('https://github.com/learn-anything/learn-anything')}`
               }
             ],
           },
@@ -63,7 +87,7 @@ const mind = {
             "children": [
               {
                 "id": "learn-regex",
-                "topic": "learn-regex"
+                "topic": `${getGithubBtn('https://github.com/zeeshanu/learn-regex')}`
               },
             ],
           },
@@ -73,7 +97,7 @@ const mind = {
             "children": [
               {
                 "id": "Awesome-Hacking",
-                "topic": "Awesome-Hacking"
+                "topic": `${getGithubBtn('https://github.com/Hack-with-Github/Awesome-Hacking')}`
               },
             ],
           },
@@ -95,15 +119,19 @@ const mind = {
                 "children": [
                   {
                     "id": "awesome-react-components",
-                    "topic": "react组件大整理 awesome-react-components",
+                    "topic": `react组件大整理 ${getGithubBtn('https://github.com/brillout/awesome-react-components')}`,
                   },
                   {
                     "id": "react-virtualized",
-                    "topic": "高性能长列表 react-virtualized",
+                    "topic": `高性能长列表 ${getGithubBtn('https://github.com/bvaughn/react-virtualized')}`,
                   },
                   {
                     "id": "react-canvas",
-                    "topic": "React组件渲染到canvas react-canvas",
+                    "topic": `React组件渲染到canvas ${getGithubBtn('https://github.com/Flipboard/react-canvas')}`,
+                  },
+                  {
+                    "id": "react-content-loader",
+                    "topic": `加载前的占位动画 ${getGithubBtn('https://github.com/danilowoz/react-content-loader')}`,
                   },
                 ],
               },
@@ -117,7 +145,7 @@ const mind = {
                 "id": "zuijiashijian",
                 "topic": "最佳实践",
                 "children": [
-                  {"id": "vue2-elm", "topic": "vue2-elm"},
+                  {"id": "vue2-elm", "topic": `${getGithubBtn('https://github.com/bailicangdu/vue2-elm')}`},
                 ],
               },
             ],
@@ -126,17 +154,17 @@ const mind = {
             "id": "Hybrid",
             "topic": "Hybrid",
             "children": [
-              {"id": "VasSonic", "topic": "VasSonic"},
+              {"id": "VasSonic", "topic": `${getGithubBtn('https://github.com/Tencent/VasSonic')}`},
             ]
           },
           {
             "id": "pwa",
             "topic": "PWA",
             "children": [
-              {"id": "Lighthouse", "topic": "Lighthouse"},
-              {"id": "workbox", "topic": "Chrome官方推出的PWA技术 workbox"},
-              {"id": "react-pwa", "topic": "react-pwa"},
-              {"id": "PWA-Book-CN", "topic": "第一本PWA中文书 PWA-Book-CN"},
+              {"id": "Lighthouse", "topic": `${getGithubBtn('https://github.com/GoogleChrome/lighthouse')}`},
+              {"id": "workbox", "topic": `Chrome官方推出的PWA技术 ${getGithubBtn('https://github.com/GoogleChrome/workbox')}`},
+              {"id": "react-pwa", "topic": `${getGithubBtn('https://github.com/Atyantik/react-pwa')}`},
+              {"id": "PWA-Book-CN", "topic": `第一本PWA中文书 ${getGithubBtn('https://github.com/SangKa/PWA-Book-CN')}`},
             ]
           },
           {
@@ -145,7 +173,7 @@ const mind = {
             "children": [
               {
                 "id": "Electron",
-                "topic": "Electron",
+                "topic": `${getGithubBtn('https://github.com/electron/electron')}`,
                 "children": [
                   {
                     "id": "eleczjsj",
@@ -153,13 +181,13 @@ const mind = {
                     "children": [
                       {
                         "id": "nylas-mail",
-                        "topic": "跨平台电子邮件客户端 nylas-mail",
+                        "topic": `跨平台电子邮件客户端 ${getGithubBtn('https://github.com/nylas/nylas-mail')}`,
                       },
                     ],
                   },
                 ]
               },
-              {"id": "yoga", "topic": "yoga"},
+              {"id": "yoga", "topic": `${getGithubBtn('https://github.com/facebook/yoga')}`},
             ]
           },
           {
@@ -167,16 +195,26 @@ const mind = {
             "topic": "Nodejs",
             "children": [
               {
+                "id": "nodekuangjia",
+                "topic": "Node框架",
+                "children": [
+                  {
+                    "id": "eggjs",
+                    "topic": `${getGithubBtn('https://github.com/eggjs/egg/')}`,
+                  },
+                ],
+              },
+              {
                 "id": "ssr",
                 "topic": "服务端渲染",
                 "children": [
                   {
                     "id": "next",
-                    "topic": "next.js",
+                    "topic": `${getGithubBtn('https://github.com/zeit/next.js/')}`,
                   },
                   {
                     "id": "serverless",
-                    "topic": "serverless",
+                    "topic": `${getGithubBtn('https://github.com/serverless/serverless')}`,
                   },
                 ],
               },
@@ -190,29 +228,29 @@ const mind = {
                 "id": "bglgj",
                 "topic": "包管理工具",
                 "children": [
-                  {"id": "JS多包拆分管理 lerna", "topic": "lerna"},
+                  {"id": "lerna", "topic": `JS多包拆分管理 ${getGithubBtn('https://github.com/lerna/lerna')}`},
                 ],
               },
               {
                 "id": "dbgjby",
                 "topic": "打包构建与编译技术",
                 "children": [
-                  {"id": "rollup", "topic": "JS模块打包器 rollup"},
-                  {"id": "Parcel", "topic": "极速、零配置Web应用打包工具 Parcel"},
+                  {"id": "rollup", "topic": `JS模块打包器 ${getGithubBtn('https://github.com/rollup/rollup')}`},
+                  {"id": "Parcel", "topic": `极速、零配置Web应用打包工具 ${getGithubBtn('https://github.com/parcel-bundler/parcel')}`},
                 ],
               },
               {
                 "id": "cdmkf",
                 "topic": "命令行脚手架开发",
                 "children": [
-                  {"id": "Inquirerjs", "topic": "Inquirer.js"},
+                  {"id": "Inquirerjs", "topic": `${getGithubBtn('https://github.com/SBoudrias/Inquirer.js/')}`},
                 ],
               },
               {
                 "id": "dmgsh",
                 "topic": "代码格式化",
                 "children": [
-                  {"id": "Prettier", "topic": "让团队保持代码风格一致 Prettier"},
+                  {"id": "Prettier", "topic": `让团队保持代码风格一致 ${getGithubBtn('https://github.com/prettier/prettier')}`},
                 ],
               },
             ]
@@ -221,14 +259,14 @@ const mind = {
             "id": "fetest",
             "topic": "前端测试技术",
             "children": [
-              {"id": "storybook", "topic": "UI组件交互式开发和测试 storybook"},
+              {"id": "storybook", "topic": `UI组件交互式开发和测试 ${getGithubBtn('https://github.com/storybooks/storybook')}`},
             ]
           },
           {
             "id": "browser",
             "topic": "浏览器相关技术",
             "children": [
-              {"id": "puppeteer", "topic": "puppeteer"},
+              {"id": "puppeteer", "topic": `${getGithubBtn('https://github.com/GoogleChrome/puppeteer')}`},
             ]
           },
           {
@@ -237,25 +275,25 @@ const mind = {
             "children": [
               {
                 "id": "chartjs",
-                "topic": "Chart.js"
+                "topic": `${getGithubBtn('https://github.com/chartjs/Chart.js')}`
               },
               {
                 "id": "recharts",
-                "topic": "React和D3构建的图表库 recharts"
+                "topic": `React和D3构建的图表库 ${getGithubBtn('https://github.com/recharts/recharts')}`
               },
               {
                 "id": "charts",
-                "topic": "纯ES6+CSS的SVG图表库 charts"
+                "topic": `纯ES6+CSS的SVG图表库 ${getGithubBtn('https://github.com/frappe/charts')}`
               },
               {
                 "id": "g2",
-                "topic": "可视化编码的图形语法 g2"
+                "topic": `可视化编码的图形语法 ${getGithubBtn('https://github.com/antvis/g2')}`
               },
               {
                 "id": "tbykshzjsj",
                 "topic": "数据图表与可视化最佳实践",
                 "children": [
-                  {"id": "github-profile-summary", "topic": "Github用户可视化分析 github-profile-summary"},
+                  {"id": "github-profile-summary", "topic": `Github用户可视化分析 ${getGithubBtn('https://github.com/tipsy/github-profile-summary')}`},
                 ],
               }
             ]
@@ -270,11 +308,11 @@ const mind = {
                 "children": [
                   {
                     "id": "bulma",
-                    "topic": "基于Flexbox的现代CSS框架 bulma",
+                    "topic": `基于Flexbox的现代CSS框架 ${getGithubBtn('https://github.com/jgthms/bulma')}`,
                   },
                   {
                     "id": "muuri",
-                    "topic": "响应式可排序可拖动的网格布局 muuri",
+                    "topic": `响应式可排序可拖动的网格布局 ${getGithubBtn('https://github.com/haltu/muuri')}`,
                   }
                 ],
               },
@@ -284,11 +322,15 @@ const mind = {
                 "children": [
                   {
                     "id": "ant-design-pro",
-                    "topic": "中后台应用搭建 ant-design-pro",
+                    "topic": `中后台应用搭建 ${getGithubBtn('https://github.com/ant-design/ant-design-pro')}`,
                   },
                   {
                     "id": "Docusaurus",
-                    "topic": "快速生成开源项目文档站点 Docusaurus",
+                    "topic": `快速生成开源项目文档站点 ${getGithubBtn('https://github.com/facebook/Docusaurus')}`,
+                  },
+                  {
+                    "id": "Gatsby",
+                    "topic": `React建站 ${getGithubBtn('https://github.com/gatsbyjs/gatsby')}`,
                   },
                 ],
               },
@@ -298,15 +340,19 @@ const mind = {
                 "children": [
                   {
                     "id": "animejs",
-                    "topic": "JS动画引擎 anime.js",
+                    "topic": `JS动画引擎 ${getGithubBtn('https://github.com/juliangarnier/anime')}`,
                   },
                   {
                     "id": "Introjs",
-                    "topic": "产品使用分步引导 Intro.js",
+                    "topic": `产品使用分步引导 ${getGithubBtn('https://github.com/usablica/intro.js')}`,
                   },
                   {
                     "id": "lottie-web",
-                    "topic": "AE动画直接用于移动端与网页 lottie-web",
+                    "topic": `AE动画直接用于移动端与网页 ${getGithubBtn('https://github.com/airbnb/lottie-web')}`,
+                  },
+                  {
+                    "id": "react-motion",
+                    "topic": `react动画库 ${getGithubBtn('https://github.com/chenglou/react-motion')}`,
                   },
                 ],
               },
@@ -316,17 +362,21 @@ const mind = {
                 "children": [
                   {
                     "id": "draggable",
-                    "topic": "draggable",
+                    "topic": `${getGithubBtn('https://github.com/Shopify/draggable')}`,
                   },
                 ],
               },
               {
                 "id": "benwenbianjiqi",
-                "topic": "富文本编辑器",
+                "topic": "编辑器",
                 "children": [
                   {
                     "id": "ORYEditor",
-                    "topic": "ORY Editor",
+                    "topic": `ORY ${getGithubBtn('https://github.com/ory/editor')}`,
+                  },
+                  {
+                    "id": "tui-editor",
+                    "topic": `Markdown编辑器 ${getGithubBtn('https://github.com/nhnent/tui.editor')}`,
                   },
                 ],
               },
@@ -336,7 +386,7 @@ const mind = {
                 "children": [
                   {
                     "id": "videojs",
-                    "topic": "video.js",
+                    "topic": `${getGithubBtn('https://github.com/videojs/video.js')}`,
                   },
                 ],
               },
@@ -346,15 +396,15 @@ const mind = {
                 "children": [
                   {
                     "id": "jsPDF",
-                    "topic": "jsPDF",
+                    "topic": `${getGithubBtn('https://github.com/MrRio/jsPDF')}`,
                   },
                   {
                     "id": "js-xlsx",
-                    "topic": "js-xlsx",
+                    "topic": `${getGithubBtn('https://github.com/SheetJS/js-xlsx')}`,
                   },
                   {
                     "id": "uppy",
-                    "topic": "全新的浏览器Web文件上传组件 uppy",
+                    "topic": `全新的浏览器Web文件上传组件 ${getGithubBtn('https://github.com/transloadit/uppy')}`,
                   },
                 ],
               },
@@ -370,7 +420,7 @@ const mind = {
                 "children": [
                   {
                     "id": "date-fns",
-                    "topic": "轻量级的JS日期库 date-fns",
+                    "topic": `轻量级的JS日期库 ${getGithubBtn('https://github.com/date-fns/date-fns')}`,
                   },
                 ],
               },
@@ -380,7 +430,7 @@ const mind = {
                 "children": [
                   {
                     "id": "ramda",
-                    "topic": "js函数式编程 ramda",
+                    "topic": `js函数式编程 ${getGithubBtn('https://github.com/ramda/ramda')}`,
                   },
                 ],
               },
@@ -390,7 +440,7 @@ const mind = {
                 "children": [
                   {
                     "id": "RxJS",
-                    "topic": "js响应式编程库 RxJS",
+                    "topic": `js响应式编程库 ${getGithubBtn('https://github.com/ReactiveX/RxJS')}`,
                   },
                 ],
               },
@@ -400,7 +450,7 @@ const mind = {
                 "children": [
                   {
                     "id": "axios",
-                    "topic": "用于浏览器和nodejs的HTTP请求库 axios",
+                    "topic": `用于浏览器和nodejs的HTTP请求库 ${getGithubBtn('https://github.com/axios/axios')}`,
                   },
                 ],
               },
@@ -410,7 +460,7 @@ const mind = {
                 "children": [
                   {
                     "id": "json-server",
-                    "topic": "本地REST API模拟 json-server",
+                    "topic": `本地REST API模拟 ${getGithubBtn('https://github.com/typicode/json-server')}`,
                   },
                 ],
               },
@@ -429,11 +479,11 @@ const mind = {
             "children": [
               {
                 "id": "trackingjs",
-                "topic": "tracking.js",
+                "topic": `${getGithubBtn('https://github.com/eduardolundgren/tracking.js')}`,
               },
               {
                 "id": "tesseractjs",
-                "topic": "图像语言识别 tesseract.js",
+                "topic": `图像语言识别 ${getGithubBtn('https://github.com/naptha/tesseract.js')}`,
               },
             ],
           },
@@ -443,7 +493,7 @@ const mind = {
             "children": [
               {
                 "id": "ARjs",
-                "topic": "AR.js",
+                "topic": `${getGithubBtn('https://github.com/jeromeetienne/AR.js')}`,
               }
             ],
           },
@@ -453,7 +503,7 @@ const mind = {
             "children": [
               {
                 "id": "react-vr",
-                "topic": "react-vr",
+                "topic": `${getGithubBtn('https://github.com/facebook/react-vr')}`,
               }
             ],
           },
@@ -463,15 +513,15 @@ const mind = {
             "children": [
               {
                 "id": "deeplearnjs",
-                "topic": "deeplearn.js",
+                "topic": `${getGithubBtn('https://github.com/PAIR-code/deeplearnjs')}`,
               },
               {
                 "id": "hubot",
-                "topic": "聊天机器人 hubot",
+                "topic": `聊天机器人 ${getGithubBtn('https://github.com/hubotio/hubot')}`,
               },
               {
                 "id": "keras-js",
-                "topic": "浏览器上运行Keras模型 keras-js",
+                "topic": `浏览器上运行Keras模型 ${getGithubBtn('https://github.com/transcranial/keras-js')}`,
               },
             ],
           },
@@ -489,7 +539,27 @@ const mind = {
             "children": [
               {
                 "id": "RAP",
-                "topic": "RAP"
+                "topic": `${getGithubBtn('https://github.com/thx/RAP')}`
+              },
+            ],
+          },
+          {
+            "id": "shejigongju",
+            "topic": "设计工具",
+            "children": [
+              {
+                "id": "react-sketchapp",
+                "topic": `React代码生成Sketch${getGithubBtn('https://github.com/airbnb/react-sketchapp')}`
+              },
+            ],
+          },
+          {
+            "id": "pythongongju",
+            "topic": "python工具",
+            "children": [
+              {
+                "id": "wechatjumpgame",
+                "topic": `python微信《跳一跳》辅助${getGithubBtn('https://github.com/wangshub/wechat_jump_game')}`
               },
             ],
           },

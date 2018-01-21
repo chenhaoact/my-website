@@ -7,7 +7,7 @@ react
 redux
 antd": "^2.9.3"  参考：https://ant.design/docs/react/introduce-cn
 material-ui: "^0.18.5"  参考：http://www.material-ui.com/
-
+axios （浏览器与node发请求均使用此库）
 
 ###服务端：
 "koa": "^2.2.0"

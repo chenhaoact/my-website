@@ -27,14 +27,26 @@ class CardArea extends React.Component {
         <div>
           <Row>
             <Col span="6" offset={2}>
-              <WorksCard imgName={'js-logo.jpg'}/>
+              <WorksCard
+                imgName={'js-logo.jpg'}
+                title={'Github优秀开源项目整理'}
+                intro="每周会整理一些不错的Github开源项目，所有项目也会第一时间整理到一张思维导图"
+                date="2018-01-01"
+                link="http://chenhaoact.com/github-project-recommend.html"
+              />
             </Col>
             <Col span="6" offset={1}>
-              <WorksCard imgName={'html5.jpg'}/>
+              <WorksCard
+                imgName={'html5.jpg'}
+                title={'我的前端学习大汇总'}
+                intro="我的前端学习大汇总。前端技术学习收获总结整理，学习资源，职业规划，面试题等"
+                date="2017-07-11"
+                link="https://github.com/chenhaoact/chenhaoact-fe-learn"
+              />
             </Col>
-            <Col span="6" offset={1}>
-              <WorksCard imgName={'css3.jpg'}/>
-            </Col>
+            {/*<Col span="6" offset={1}>*/}
+              {/*<WorksCard imgName={'css3.jpg'}/>*/}
+            {/*</Col>*/}
           </Row>
         </div>
       </div>

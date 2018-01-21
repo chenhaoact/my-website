@@ -22,7 +22,7 @@ class ThinkArticle extends React.Component {
     const MdHtml = require('../../' + MdUrl);
 
     return (
-      <div>
+      <div className="thinkArticle">
         {
           /**
            * MdHtml是通过webpack的markdown-loader处理，引入后直接变为相应html
